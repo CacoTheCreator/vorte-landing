@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VORTE — FF&E para Proyectos Multifamily e Inmobiliarios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;1,9..40,200&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--accent); }
+
+  :root {
+    --black: #0a0a0a;
+    --off-black: #111111;
+    --border: rgba(255,255,255,0.07);
+    --white: #f5f4f0;
+    --muted: rgba(245,244,240,0.38);
+    --accent: #c8b89a;
+    --accent-dim: rgba(200,184,154,0.15);
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.5rem 4rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(10,10,10,0.94);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.25em;
+    color: var(--white);
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2.5rem; }
+  .nav-links a {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.4rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--accent); color: var(--black); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10rem 4rem 6rem;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+  .hero-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4.5rem, 8vw, 8rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 2.5rem;
+  }
+  .hero-headline em { font-style: normal; color: var(--accent); }
+  .hero-sub {
+    font-size: 0.95rem;
+    font-weight: 200;
+    color: var(--muted);
+    max-width: 400px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+  .hero-actions { display: flex; align-items: center; gap: 2rem; }
+  .btn-primary {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 1rem 2.2rem;
+    background: var(--accent);
+    color: var(--black);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--white); }
+  .btn-ghost {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .btn-ghost:hover { color: var(--white); }
+  .btn-ghost::after { content: '→'; }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+    background: #0d0d0d;
+  }
+  .hero-right-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+    filter: grayscale(100%);
+    display: block;
+  }
+  .hero-right-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+  }
+  .hero-right-placeholder-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(8rem, 14vw, 18rem);
+    color: rgba(200,184,154,0.05);
+    letter-spacing: -0.03em;
+    line-height: 0.85;
+    text-align: center;
+    user-select: none;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, var(--black) 0%, transparent 40%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-counter {
+    position: absolute;
+    bottom: 6rem;
+    right: 4rem;
+    z-index: 3;
+    text-align: right;
+  }
+  .hero-counter-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4.5rem;
+    color: var(--white);
+    line-height: 1;
+  }
+  .hero-counter-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* TICKER */
+  .ticker {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 0.9rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+    background: var(--off-black);
+  }
+  .ticker-track {
+    display: inline-flex;
+    gap: 4rem;
+    animation: ticker 30s linear infinite;
+    will-change: transform;
+  }
+  .ticker-item {
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .ticker-item span { color: var(--accent); margin-right: 0.8rem; }
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* STATEMENT */
+  .statement {
+    padding: 8rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .statement-left {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.8rem, 4vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: 0.03em;
+    color: var(--white);
+  }
+  .statement-left em { font-style: normal; color: var(--accent); }
+  .statement-right { color: var(--muted); font-size: 0.95rem; font-weight: 200; line-height: 1.9; }
+  .statement-right strong { color: var(--white); font-weight: 400; }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* SERVICES */
+  .services {
+    padding: 8rem 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .service-card {
+    padding: 3rem 2.5rem;
+    border-right: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card:last-child { border-right: none; }
+  .service-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+  .service-card:hover { background: var(--accent-dim); }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    opacity: 0.5;
+  }
+  .service-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.06em;
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  .service-desc {
+    font-size: 0.82rem;
+    font-weight: 200;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .service-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .service-items li {
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: rgba(245,244,240,0.45);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .service-items li::before {
+    content: '';
+    display: block;
+    width: 3px; height: 3px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+
+  /* MODEL */
+  .model {
+    padding: 8rem 4rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--off-black);
+  }
+  .model-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+    margin-top: 4rem;
+  }
+  .model-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    line-height: 1.05;
+  }
+  .model-text {
+    font-size: 0.9rem;
+    font-weight: 200;
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+  }
+  .model-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  .model-stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .model-stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .model-right { display: flex; flex-direction: column; }
+  .model-step {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .model-step:first-child { border-top: 1px solid var(--border); }
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: var(--accent);
+    opacity: 0.35;
+    line-height: 1;
+    padding-top: 0.1rem;
+  }
+  .step-title {
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+  .step-desc {
+    font-size: 0.8rem;
+    font-weight: 200;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ORIGINS */
+  .origins {
+    padding: 8rem 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .origins-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 5rem;
+  }
+  .origins-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 3.5vw, 3.5rem);
+    letter-spacing: 0.03em;
+    color: var(--white);
+    line-height: 1.05;
+  }
+  .origins-title em { font-style: normal; color: var(--accent); }
+  .origins-text {
+    font-size: 0.88rem;
+    font-weight: 200;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+  .origins-clusters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+  }
+  .cluster {
+    padding: 2.5rem;
+    border-right: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+  .cluster:last-child { border-right: none; }
+  .cluster:hover { background: var(--accent-dim); }
+  .cluster-city {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+  .cluster-country {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .cluster-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .cluster-items li {
+    font-size: 0.78rem;
+    font-weight: 200;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .cluster-items li::before {
+    content: '';
+    display: block;
+    width: 3px; height: 3px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    opacity: 0.4;
+  }
+
+  /* DIFFERENTIATORS — fixed: accent line instead of invisible number */
+  .diff {
+    padding: 8rem 4rem;
+    background: var(--off-black);
+    border-bottom: 1px solid var(--border);
+  }
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    margin-top: 4rem;
+  }
+  .diff-item {
+    border-top: 2px solid var(--border);
+    padding-top: 2rem;
+    transition: border-color 0.3s;
+  }
+  .diff-item:hover { border-top-color: var(--accent); }
+  .diff-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .diff-text {
+    font-size: 0.85rem;
+    font-weight: 200;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 10rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-left { position: relative; z-index: 2; }
+  .cta-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .cta-headline em { font-style: normal; color: var(--accent); }
+  .cta-sub {
+    font-size: 0.9rem;
+    font-weight: 200;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+  .cta-right {
+    position: relative; z-index: 2;
+    display: flex;
+    flex-direction: column;
+  }
+  .contact-line {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-line:first-child { border-top: 1px solid var(--border); }
+  .contact-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.7;
+  }
+  .contact-value {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--white);
+  }
+  .cta-btn-wrap { padding-top: 1.5rem; }
+
+  /* FOOTER — fixed: added legal info */
+  footer {
+    padding: 2.5rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+  }
+  .footer-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .footer-copy {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: rgba(245,244,240,0.18);
+    text-transform: uppercase;
+  }
+  .footer-rut {
+    font-size: 0.62rem;
+    color: rgba(245,244,240,0.12);
+    letter-spacing: 0.06em;
+  }
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+  }
+  .footer-links a {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,244,240,0.22);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--muted); }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 8rem 1.5rem 4rem; }
+    .hero-right { display: none; }
+    .ticker-track { animation-duration: 18s; }
+    .statement { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 2rem; }
+    .services { padding: 4rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .model { padding: 4rem 1.5rem; }
+    .model-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .origins { padding: 4rem 1.5rem; }
+    .origins-header { grid-template-columns: 1fr; gap: 2rem; }
+    .origins-banner { height: 35vh; min-height: 220px; }
+    .origins-banner-overlay { padding: 2rem 1.5rem; }
+    .origins-clusters { grid-template-columns: 1fr; }
+    .cluster { border-right: none; border-bottom: 1px solid var(--border); }
+    .cluster:last-child { border-bottom: none; }
+    .proof-section { grid-template-columns: 1fr; }
+    .proof-img { height: 55vw; min-height: 260px; }
+    .proof-img::after { display: none; }
+    .proof-content { padding: 3rem 1.5rem; }
+    .diff { padding: 4rem 1.5rem; }
+    .diff-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .cta-section { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
+    .cta-bg { display: none; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    .gallery-track--three { grid-template-columns: 1fr; height: auto; }
+    .gallery-track--three .gallery-item { height: 55vw; min-height: 240px; border-right: none; border-bottom: 1px solid var(--border); }
+  }
+
+  @media (max-width: 480px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ORIGINS BANNER */
+  .origins-banner {
+    position: relative;
+    height: 45vh;
+    min-height: 320px;
+    overflow: hidden;
+    margin-bottom: 0;
+    border-top: 1px solid var(--border);
+  }
+  .origins-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.45) grayscale(20%);
+    transition: transform 1s ease;
+  }
+  .origins-banner:hover img { transform: scale(1.03); }
+  .origins-banner-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem 4rem;
+    background: linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 60%);
+  }
+  .origins-banner-tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  .origins-banner-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    letter-spacing: 0.04em;
+    color: var(--white);
+    opacity: 0.9;
+  }
+
+  /* CLUSTER WITH BG IMAGE */
+  .cluster--img {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cluster-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,10,10,0.72);
+    transition: background 0.3s;
+  }
+  .cluster--img:hover .cluster-img-overlay {
+    background: rgba(10,10,10,0.55);
+  }
+  .cluster-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* INSPECTOR PROOF SECTION */
+  .proof-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--border);
+    min-height: 520px;
+  }
+  .proof-img {
+    position: relative;
+    overflow: hidden;
+  }
+  .proof-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.8);
+    transition: transform 0.8s ease, filter 0.4s ease;
+  }
+  .proof-img:hover img {
+    transform: scale(1.03);
+    filter: brightness(0.95);
+  }
+  .proof-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent 60%, var(--off-black) 100%);
+    pointer-events: none;
+  }
+  .proof-content {
+    background: var(--off-black);
+    padding: 5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .proof-tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .proof-tag::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+  .proof-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    letter-spacing: 0.04em;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+  }
+  .proof-title em { font-style: normal; color: var(--accent); }
+  .proof-text {
+    font-size: 0.88rem;
+    font-weight: 200;
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 2rem;
+  }
+  .proof-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .proof-list li {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: rgba(245,244,240,0.55);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .proof-list li::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .gallery {
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .gallery-track {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 70vh;
+    min-height: 480px;
+  }
+  .gallery-track--three {
+    grid-template-columns: 1.2fr 1fr 1fr;
+    height: 60vh;
+    min-height: 420px;
+  }
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+    filter: brightness(0.75);
+  }
+  .gallery-item:hover img {
+    transform: scale(1.04);
+    filter: brightness(0.95);
+  }
+  .gallery-track--three .gallery-item:first-child {
+    border-right: 1px solid var(--border);
+  }
+  .gallery-track--three .gallery-item:nth-child(2) {
+    border-right: 1px solid var(--border);
+  }
+  .gallery-item:first-child {
+    border-right: 1px solid var(--border);
+  }
+  .gallery-caption {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: rgba(10,10,10,0.55);
+    padding: 0.5rem 1rem;
+    backdrop-filter: blur(4px);
+  }
+
+  /* CTA CORRIDOR BG */
+  .cta-section {
+    background-image: url('img/corredor.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10,10,10,0.82);
+    z-index: 1;
+  }
+  .cta-section > * { position: relative; z-index: 2; }
+  .cta-bg { display: none; }
+
+  /* PROVEEDORES */
+  .proveedores {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    padding: 8rem 4rem;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+    background: var(--off-black);
+  }
+  .proveedores-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 3.5vw, 3.8rem);
+    line-height: 1.0;
+    letter-spacing: 0.03em;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .proveedores-title em { font-style: normal; color: var(--accent); }
+  .proveedores-text {
+    font-size: 0.9rem;
+    font-weight: 200;
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+    max-width: 420px;
+  }
+  .proveedores-item {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .proveedores-item:first-child { border-top: 1px solid var(--border); }
+  .proveedores-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: var(--accent);
+    opacity: 0.35;
+    line-height: 1;
+  }
+  .proveedores-item-title {
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+  .proveedores-item-desc {
+    font-size: 0.8rem;
+    font-weight: 200;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  @media (max-width: 768px) {
+    .proveedores { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-tag { animation: fadeUp 0.6s ease 0.1s both; }
+  .hero-headline { animation: fadeUp 0.7s ease 0.25s both; }
+  .hero-sub { animation: fadeUp 0.7s ease 0.4s both; }
+  .hero-actions { animation: fadeUp 0.7s ease 0.55s both; }
+
+  @media (max-width: 768px) {
+    .gallery-track { grid-template-columns: 1fr; height: auto; }
+    .gallery-item { height: 55vw; min-height: 260px; }
+    .gallery-item:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+    .cta-section { background-attachment: scroll; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">VORTE<span>.</span></div>
+  <div class="nav-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#modelo">Modelo</a>
+    <a href="#origen">Origen</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <a href="#contacto" class="nav-cta">Cotizar proyecto</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Sourcing FF&amp;E para Proyectos Inmobiliarios — Santiago, Chile</div>
+    <h1 class="hero-headline">
+      Equipamiento<br>de tu edificio.<br><em>Es un activo.</em>
+    </h1>
+    <p class="hero-sub">
+      Sourcing directo de FF&amp;E desde China para proyectos Multifamily, fondos de inversión inmobiliaria y edificios de renta. Arancel 0% vía TLC Chile–China. Entrega coordinada en obra.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">Iniciar conversación</a>
+      <a href="#servicios" class="btn-ghost">Ver servicios</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-right-img" src="img/hero.jpg" alt="Espacio residencial de alto estándar">
+    <div class="hero-counter">
+      <div class="hero-counter-num">0%</div>
+      <div class="hero-counter-label">Arancel vía TLC Chile–China</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item"><span>—</span> Sourcing Directo China</span>
+    <span class="ticker-item"><span>—</span> FF&amp;E Multifamily &amp; Fondos Inmobiliarios</span>
+    <span class="ticker-item"><span>—</span> Contract para Hoteles y Edificios</span>
+    <span class="ticker-item"><span>—</span> Arancel 0% TLC</span>
+    <span class="ticker-item"><span>—</span> Validación de Proveedores en Origen</span>
+    <span class="ticker-item"><span>—</span> Brokerage &amp; Representación</span>
+    <span class="ticker-item"><span>—</span> Foshan · Dongguan · Anji</span>
+    <span class="ticker-item"><span>—</span> Entrega Directa en Obra</span>
+    <span class="ticker-item"><span>—</span> Sourcing Directo China</span>
+    <span class="ticker-item"><span>—</span> FF&amp;E Multifamily &amp; Fondos Inmobiliarios</span>
+    <span class="ticker-item"><span>—</span> Contract para Hoteles y Edificios</span>
+    <span class="ticker-item"><span>—</span> Arancel 0% TLC</span>
+    <span class="ticker-item"><span>—</span> Auditoría de Proveedores con IA</span>
+    <span class="ticker-item"><span>—</span> Brokerage & Representación</span>
+    <span class="ticker-item"><span>—</span> Foshan · Dongguan · Anji</span>
+    <span class="ticker-item"><span>—</span> Entrega Directa en Obra</span>
+  </div>
+</div>
+
+<!-- STATEMENT -->
+<section class="statement">
+  <div class="statement-left">
+    No es un gasto.<br><em>Es capex</em><br>que trabaja.
+  </div>
+  <div class="statement-right">
+    Para un fondo o propietario de edificios en renta, cada unidad equipada tiene un impacto directo en el arrendamiento, la mantención y la depreciación contable. El problema no es el arancel. Es la <strong>brecha entre lo que se puede obtener en origen y lo que termina llegando a obra</strong>.<br><br>
+    VORTE opera esa brecha: seleccionamos fabricantes, validamos calidad en origen, coordinamos la logística y entregamos en obra — para que el proyecto cumpla sus tiempos y el equipamiento soporte años de uso intensivo.
+  </div>
+</section>
+
+<!-- GALLERY — Craftsmanship showcase -->
+<section class="gallery">
+  <div class="gallery-track gallery-track--three">
+    <div class="gallery-item">
+      <img src="img/dongguan.jpg" alt="Herrajes brushed brass fabricados en Dongguan">
+      <div class="gallery-caption">Herrajes contract · Dongguan, China</div>
+    </div>
+    <div class="gallery-item">
+      <img src="img/inspector.jpg" alt="Control de calidad en fábrica de tapizados">
+      <div class="gallery-caption">Control de calidad · Fábrica validada</div>
+    </div>
+    <div class="gallery-item">
+      <img src="img/anji.jpg" alt="Bodega de madera natural en Anji, China">
+      <div class="gallery-caption">Madera natural · Anji, Zhejiang</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="section-label">Líneas de producto</div>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-title">Multifamily & Edificios de Renta</div>
+      <div class="service-desc">Equipamiento estandarizado para portafolios de departamentos en arriendo. Mobiliario contract por unidad, con especificaciones replicables para reducir capex y simplificar la reposición.</div>
+      <ul class="service-items">
+        <li>Equipamiento completo por unidad</li>
+        <li>Especificaciones estandarizadas por proyecto</li>
+        <li>Mobiliario contract de uso intensivo</li>
+        <li>Coordinación por etapa de obra</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-title">Built-In: Cocinas & Clósets</div>
+      <div class="service-desc">Muebles a medida fabricados en origen con materiales y herrajes de calidad contract. Costo de fabricación chino con estándar para uso de arrendatarios.</div>
+      <ul class="service-items">
+        <li>Cocinas modulares</li>
+        <li>Clósets y walk-in sistemas</li>
+        <li>Vanitorios y baños</li>
+        <li>Muebles de TV y living</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-title">Residencial & Dormitorios</div>
+      <div class="service-desc">Líneas completas de dormitorio y living para proyectos residenciales. Desde el concepto hasta la entrega en obra.</div>
+      <ul class="service-items">
+        <li>Dormitorios completos</li>
+        <li>Living y comedor</li>
+        <li>Escritorios y home office</li>
+        <li>Estanterías y biblioteca</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-title">Hospitalidad & Corporativo</div>
+      <div class="service-desc">Mobiliario para hoteles, clínicas y edificios corporativos. Especificaciones de uso intensivo y entrega coordinada para proyectos de escala.</div>
+      <ul class="service-items">
+        <li>Lobbies y áreas comunes</li>
+        <li>Habitaciones amobladas</li>
+        <li>Terrazas y rooftops</li>
+        <li>Sillas y sillones contract</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODEL -->
+<section class="model" id="modelo">
+  <div class="section-label">Modelo de trabajo</div>
+  <div class="model-grid">
+    <div class="model-left">
+      <div class="model-title">Tres ejes de<br>operación VORTE</div>
+      <p class="model-text">
+        Según el tipo de proyecto y el nivel de control que necesite el cliente, operamos bajo tres esquemas que pueden combinarse.
+      </p>
+      <div class="model-stat">
+        <div class="model-stat-num">3–7%</div>
+        <div class="model-stat-label">Comisión FOB<br>en brokerage</div>
+      </div>
+      <div class="model-stat">
+        <div class="model-stat-num">0%</div>
+        <div class="model-stat-label">Arancel aplicable<br>vía TLC vigente</div>
+      </div>
+    </div>
+    <div class="model-right">
+      <div class="model-step">
+        <div class="step-num">A</div>
+        <div class="step-body">
+          <div class="step-title">Sourcing Directo</div>
+          <div class="step-desc">VORTE gestiona la relación con fabricantes chinos, audita la producción y coordina la importación. El cliente recibe el producto en obra con trazabilidad completa.</div>
+        </div>
+      </div>
+      <div class="model-step">
+        <div class="step-num">B</div>
+        <div class="step-body">
+          <div class="step-title">Brokerage & Representación</div>
+          <div class="step-desc">Actuamos como agente comercial de empresas chinas presentes en Chile. Cerramos el trato con la constructora o inmobiliaria y cobramos comisión sobre el FOB acordado.</div>
+        </div>
+      </div>
+      <div class="model-step">
+        <div class="step-num">C</div>
+        <div class="step-body">
+          <div class="step-title">Validación de Proveedores</div>
+          <div class="step-desc">Evaluamos la salud financiera de fábricas en origen, verificamos certificaciones y revisamos el historial de exportación — antes de comprometer capital del cliente.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORIGINS -->
+<section class="origins" id="origen">
+  <div class="origins-header">
+    <div class="origins-title">Origen<br>verificado.<br><em>Entrega</em><br>coordinada.</div>
+    <div class="origins-text">
+      Operamos desde los tres clústeres industriales más relevantes de China para el sector del mueble y equipamiento interior. Cada proveedor es validado antes de integrarse al portafolio VORTE.
+    </div>
+  </div>
+
+  <!-- Fullwidth origin image banner -->
+  <div class="origins-banner">
+    <img src="img/anji.jpg" alt="Clúster industrial de madera en Anji, China">
+    <div class="origins-banner-overlay">
+      <span class="origins-banner-tag">Vista en terreno — Anji, Zhejiang</span>
+      <span class="origins-banner-text">Los materiales se verifican antes de entrar a producción</span>
+    </div>
+  </div>
+
+  <div class="origins-clusters">
+    <div class="cluster">
+      <div class="cluster-city">Foshan</div>
+      <div class="cluster-country">Guangdong, China</div>
+      <ul class="cluster-items">
+        <li>Muebles de cocina premium</li>
+        <li>Clósets y sistemas built-in</li>
+        <li>Baños y vanitorios</li>
+        <li>Herrajes y accesorios</li>
+      </ul>
+    </div>
+    <div class="cluster cluster--img" style="background-image: url('img/dongguan.jpg')">
+      <div class="cluster-img-overlay"></div>
+      <div class="cluster-content">
+        <div class="cluster-city">Dongguan</div>
+        <div class="cluster-country">Guangdong, China</div>
+        <ul class="cluster-items">
+          <li>Muebles tapizados</li>
+          <li>Dormitorios completos</li>
+          <li>Sillas y sillones contract</li>
+          <li>Muebles de oficina</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cluster">
+      <div class="cluster-city">Anji</div>
+      <div class="cluster-country">Zhejiang, China</div>
+      <ul class="cluster-items">
+        <li>Sillas ergonómicas</li>
+        <li>Bambú y sustentable</li>
+        <li>Outdoor y terraza</li>
+        <li>Contract hospitalidad</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF SECTION — Inspector visual -->
+<section class="proof-section">
+  <div class="proof-img">
+    <img src="img/inspector.jpg" alt="Control de calidad en fábrica de tapizados contract">
+  </div>
+  <div class="proof-content">
+    <div class="proof-tag">Validación en origen</div>
+    <div class="proof-title">Antes de<br>comprometer<br><em>capital.</em></div>
+    <p class="proof-text">
+      Cada fábrica que integra el portafolio VORTE pasa por una revisión previa: verificamos certificaciones, historial de exportación y capacidad de producción. El control de calidad ocurre en origen, no después del despacho.
+    </p>
+    <ul class="proof-list">
+      <li>Revisión de certificaciones antes de la orden</li>
+      <li>Inspección de calidad durante producción</li>
+      <li>Verificación de empaque y consolidado</li>
+      <li>Trazabilidad completa desde fábrica a obra</li>
+    </ul>
+  </div>
+</section>
+
+<!-- DIFFERENTIATORS — fixed visual -->
+<section class="diff">
+  <div class="section-label">Por qué VORTE</div>
+  <div class="diff-grid">
+    <div class="diff-item">
+      <div class="diff-title">Foco en el activo</div>
+      <div class="diff-text">El FF&amp;E de un edificio de renta no es decoración — es capex que impacta el arrendamiento, la mantención y la depreciación contable. Trabajamos con ese criterio desde el inicio del proyecto.</div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-title">Validación en origen</div>
+      <div class="diff-text">Verificamos fabricantes, revisamos certificaciones y evaluamos historial de exportación antes de comprometer capital. No enviamos dinero a una fábrica que no hemos validado.</div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-title">Sin catálogos genéricos</div>
+      <div class="diff-text">No entregamos 3.000 SKUs y te dejamos elegir. Proponemos especificaciones concretas según el tipo de proyecto, el perfil del arrendatario y el estándar de la inmobiliaria.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROVEEDORES -->
+<section class="proveedores">
+  <div class="proveedores-left">
+    <div class="section-label">¿Eres proveedor?</div>
+    <h2 class="proveedores-title">¿Fabricas o<br>distribuyes FF&amp;E<br><em>de calidad?</em></h2>
+    <p class="proveedores-text">
+      Si representas una fábrica o distribuidora con capacidad de exportación, VORTE puede ser tu puerta de entrada al mercado inmobiliario chileno. Trabajamos con proveedores que cumplan estándares de calidad contract y tengan historial de exportación.
+    </p>
+    <a href="mailto:proyecto@vorte.cl?subject=Soy proveedor — quiero conectar con VORTE" class="btn-primary">Conectar como proveedor</a>
+  </div>
+  <div class="proveedores-right">
+    <div class="proveedores-item">
+      <div class="proveedores-num">01</div>
+      <div class="proveedores-body">
+        <div class="proveedores-item-title">Acceso al mercado chileno</div>
+        <div class="proveedores-item-desc">Conectamos tu producto con proyectos Multifamily, fondos de inversión y desarrolladoras en Chile.</div>
+      </div>
+    </div>
+    <div class="proveedores-item">
+      <div class="proveedores-num">02</div>
+      <div class="proveedores-body">
+        <div class="proveedores-item-title">Sin burocracia comercial</div>
+        <div class="proveedores-item-desc">VORTE actúa como tu representante local. Tú produces, nosotros gestionamos la relación comercial y la logística.</div>
+      </div>
+    </div>
+    <div class="proveedores-item">
+      <div class="proveedores-num">03</div>
+      <div class="proveedores-body">
+        <div class="proveedores-item-title">Proyectos de escala</div>
+        <div class="proveedores-item-desc">Nuestros clientes equipan edificios completos — no compran una sola unidad. Volumen real desde el primer proyecto.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contacto">
+  <div class="cta-bg">VORTE</div>
+  <div class="cta-left">
+    <div class="section-label">Contacto</div>
+    <h2 class="cta-headline">¿Tienes un<br>proyecto<br><em>en desarrollo?</em></h2>
+    <p class="cta-sub">
+      Si estás equipando un edificio de renta, un portafolio Multifamily o un proyecto de hospitalidad, conversemos. Una llamada de 20 minutos es suficiente para ver si VORTE es el proveedor correcto para ese proyecto.
+    </p>
+  </div>
+  <div class="cta-right">
+    <div class="contact-line">
+      <span class="contact-label">Email</span>
+      <span class="contact-value"><a href="mailto:proyecto@vorte.cl">proyecto@vorte.cl</a></span>
+    </div>
+    <div class="contact-line">
+      <span class="contact-label">Chile</span>
+      <span class="contact-value"><a href="https://wa.me/56996313261" target="_blank">+56 9 9631 3261</a></span>
+    </div>
+    <div class="contact-line">
+      <span class="contact-label">España</span>
+      <span class="contact-value"><a href="https://wa.me/34600038883" target="_blank">+34 600 038 883</a></span>
+    </div>
+    <div class="contact-line">
+      <span class="contact-label">Base de operaciones</span>
+      <span class="contact-value">Santiago, Chile · España — Europa</span>
+    </div>
+    <div class="cta-btn-wrap">
+      <a href="mailto:proyecto@vorte.cl" class="btn-primary">Escribir ahora</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">VORTE.</div>
+  <div class="footer-center">
+    <div class="footer-copy">© 2026 VORTE — Brokerage & Sourcing FF&amp;E</div>
+    <div class="footer-rut">Vision Projects SpA · Santiago, Chile · vorte.cl</div>
+  </div>
+  <div class="footer-links">
+    <a href="mailto:proyecto@vorte.cl">proyecto@vorte.cl</a>
+  </div>
+</footer>
+
+</body>
+</html>
