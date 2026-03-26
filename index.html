@@ -931,8 +931,32 @@
 
   /* MOBILE */
   @media (max-width: 768px) {
-    nav { padding: 1.2rem 1.5rem; }
-    .nav-links { display: none; }
+    nav {
+      padding: 1rem 1.5rem;
+      flex-wrap: wrap;
+      gap: 0.9rem 1.2rem;
+      align-items: center;
+    }
+    .nav-links {
+      display: flex;
+      order: 3;
+      width: 100%;
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: 0.2rem;
+      scrollbar-width: none;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a {
+      flex-shrink: 0;
+      font-size: 0.64rem;
+      letter-spacing: 0.14em;
+    }
+    .nav-cta {
+      margin-left: auto;
+      padding: 0.55rem 1rem;
+      font-size: 0.64rem;
+    }
     .hero { grid-template-columns: 1fr; }
     .hero-left { padding: 8rem 1.5rem 4rem; }
     .hero-right { display: none; }
@@ -968,6 +992,26 @@
   @media (max-width: 480px) {
     .services-grid { grid-template-columns: 1fr; }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+    .reveal {
+      opacity: 1 !important;
+    }
+    .ticker-track {
+      animation: none !important;
+    }
+    .hero-right-img,
+    .origins-banner img,
+    .proof-img img,
+    .gallery-item img {
+      transform: none !important;
+    }
+  }
 </style>
 </head>
 <body>
@@ -992,7 +1036,7 @@
       Equipamiento<br>de tu edificio.<br><em>Es un activo.</em>
     </h1>
     <p class="hero-sub">
-      Sourcing directo de FF&amp;E desde China para proyectos Multifamily, fondos de inversión inmobiliaria y edificios de renta. Arancel 0% vía TLC Chile–China. Entrega coordinada en obra.
+      Sourcing directo de FF&amp;E desde China para proyectos Multifamily, fondos de inversión inmobiliaria y edificios de renta. Evaluamos ventajas del TLC Chile-China y la estructura de importación según cada proyecto. Entrega coordinada en obra.
     </p>
     <div class="hero-actions">
       <a href="#contacto" class="btn-primary">Iniciar conversación</a>
@@ -1002,8 +1046,8 @@
   <div class="hero-right">
     <img class="hero-right-img" id="hero-img" src="img/hero.jpg" alt="Espacio residencial de alto estándar">
     <div class="hero-counter">
-      <div class="hero-counter-num">0%</div>
-      <div class="hero-counter-label">Arancel vía TLC Chile–China</div>
+      <div class="hero-counter-num">TLC</div>
+      <div class="hero-counter-label">Evaluado según origen y estructura de importación</div>
     </div>
   </div>
 </section>
@@ -1014,7 +1058,7 @@
     <span class="ticker-item"><span>—</span> Sourcing Directo China</span>
     <span class="ticker-item"><span>—</span> FF&amp;E Multifamily &amp; Fondos Inmobiliarios</span>
     <span class="ticker-item"><span>—</span> Contract para Hoteles y Edificios</span>
-    <span class="ticker-item"><span>—</span> Arancel 0% TLC</span>
+    <span class="ticker-item"><span>—</span> TLC evaluado caso a caso</span>
     <span class="ticker-item"><span>—</span> Validación de Proveedores en Origen</span>
     <span class="ticker-item"><span>—</span> Brokerage &amp; Representación</span>
     <span class="ticker-item"><span>—</span> Foshan · Dongguan · Anji</span>
@@ -1022,7 +1066,7 @@
     <span class="ticker-item"><span>—</span> Sourcing Directo China</span>
     <span class="ticker-item"><span>—</span> FF&amp;E Multifamily &amp; Fondos Inmobiliarios</span>
     <span class="ticker-item"><span>—</span> Contract para Hoteles y Edificios</span>
-    <span class="ticker-item"><span>—</span> Arancel 0% TLC</span>
+    <span class="ticker-item"><span>—</span> TLC evaluado caso a caso</span>
     <span class="ticker-item"><span>—</span> Validación de Proveedores en Origen</span>
     <span class="ticker-item"><span>—</span> Brokerage &amp; Representación</span>
     <span class="ticker-item"><span>—</span> Foshan · Dongguan · Anji</span>
@@ -1124,8 +1168,8 @@
         <div class="model-stat-label">Comisión FOB<br>en brokerage</div>
       </div>
       <div class="model-stat">
-        <div class="model-stat-num" data-counter="0">0%</div>
-        <div class="model-stat-label">Arancel aplicable<br>vía TLC vigente</div>
+        <div class="model-stat-num">TLC</div>
+        <div class="model-stat-label">Evaluación de origen y<br>estructura de importación</div>
       </div>
     </div>
     <div class="model-right reveal" style="--delay: 0.2s">
@@ -1305,11 +1349,11 @@
     </div>
     <div class="contact-line">
       <span class="contact-label">Chile</span>
-      <span class="contact-value"><a href="https://wa.me/56996313261" target="_blank">+56 9 9631 3261</a></span>
+      <span class="contact-value"><a href="https://wa.me/56996313261" target="_blank" rel="noopener noreferrer">+56 9 9631 3261</a></span>
     </div>
     <div class="contact-line">
       <span class="contact-label">España</span>
-      <span class="contact-value"><a href="https://wa.me/34600038883" target="_blank">+34 600 038 883</a></span>
+      <span class="contact-value"><a href="https://wa.me/34600038883" target="_blank" rel="noopener noreferrer">+34 600 038 883</a></span>
     </div>
     <div class="contact-line">
       <span class="contact-label">Base de operaciones</span>
@@ -1336,6 +1380,8 @@
 </footer>
 
 <script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   // NAV scroll state
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
@@ -1343,20 +1389,24 @@
   }, { passive: true });
 
   // SCROLL REVEAL
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  if (reduceMotion) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  } else {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  }
 
   // HERO PARALLAX — imagen del hero se mueve suave al hacer scroll
   const heroImg = document.getElementById('hero-img');
-  if (heroImg) {
+  if (heroImg && !reduceMotion) {
     window.addEventListener('scroll', () => {
       const offset = window.scrollY * 0.25;
       heroImg.style.transform = `translateY(${offset}px)`;
@@ -1378,30 +1428,29 @@
     requestAnimationFrame(update);
   }
 
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const type = el.dataset.counter;
-      if (type === '0') {
-        animateCounter(el, 8, 0, 1200, '%');
-      } else if (type === '3-7') {
-        // Animate to midpoint then display range
-        let frame = 0;
-        const total = 40;
-        const tick = () => {
-          frame++;
-          const v = Math.round((frame / total) * 7);
-          el.textContent = v < 3 ? v + '%' : '3–7%';
-          if (frame < total) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      }
-      counterObserver.unobserve(el);
-    });
-  }, { threshold: 0.5 });
+  if (!reduceMotion) {
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const type = el.dataset.counter;
+        if (type === '3-7') {
+          let frame = 0;
+          const total = 40;
+          const tick = () => {
+            frame++;
+            const v = Math.round((frame / total) * 7);
+            el.textContent = v < 3 ? v + '%' : '3–7%';
+            if (frame < total) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
 
-  document.querySelectorAll('[data-counter]').forEach(el => counterObserver.observe(el));
+    document.querySelectorAll('[data-counter]').forEach(el => counterObserver.observe(el));
+  }
 </script>
 
 </body>
