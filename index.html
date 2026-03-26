@@ -533,7 +533,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.45) grayscale(20%);
+    filter: brightness(0.62) grayscale(20%);
     transition: transform 1s ease;
   }
   .origins-banner:hover img { transform: scale(1.03); }
@@ -682,7 +682,7 @@
     min-height: 480px;
   }
   .gallery-track--three {
-    grid-template-columns: 1.2fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     height: 60vh;
     min-height: 420px;
   }
@@ -1173,15 +1173,18 @@
   </div>
 
   <div class="origins-clusters">
-    <div class="cluster reveal" style="--delay: 0.05s">
-      <div class="cluster-city">Foshan</div>
-      <div class="cluster-country">Guangdong, China</div>
-      <ul class="cluster-items">
-        <li>Muebles de cocina premium</li>
-        <li>Clósets y sistemas built-in</li>
-        <li>Baños y vanitorios</li>
-        <li>Herrajes y accesorios</li>
-      </ul>
+    <div class="cluster cluster--img reveal" style="--delay: 0.05s; background-image: url('img/inspector.jpg')">
+      <div class="cluster-img-overlay"></div>
+      <div class="cluster-content">
+        <div class="cluster-city">Foshan</div>
+        <div class="cluster-country">Guangdong, China</div>
+        <ul class="cluster-items">
+          <li>Muebles de cocina premium</li>
+          <li>Clósets y sistemas built-in</li>
+          <li>Baños y vanitorios</li>
+          <li>Herrajes y accesorios</li>
+        </ul>
+      </div>
     </div>
     <div class="cluster cluster--img reveal" style="--delay: 0.12s; background-image: url('img/dongguan.jpg')">
       <div class="cluster-img-overlay"></div>
@@ -1196,15 +1199,18 @@
         </ul>
       </div>
     </div>
-    <div class="cluster reveal" style="--delay: 0.19s">
-      <div class="cluster-city">Anji</div>
-      <div class="cluster-country">Zhejiang, China</div>
-      <ul class="cluster-items">
-        <li>Sillas ergonómicas</li>
-        <li>Bambú y sustentable</li>
-        <li>Outdoor y terraza</li>
-        <li>Contract hospitalidad</li>
-      </ul>
+    <div class="cluster cluster--img reveal" style="--delay: 0.19s; background-image: url('img/anji.jpg')">
+      <div class="cluster-img-overlay"></div>
+      <div class="cluster-content">
+        <div class="cluster-city">Anji</div>
+        <div class="cluster-country">Zhejiang, China</div>
+        <ul class="cluster-items">
+          <li>Sillas ergonómicas</li>
+          <li>Bambú y sustentable</li>
+          <li>Outdoor y terraza</li>
+          <li>Contract hospitalidad</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
