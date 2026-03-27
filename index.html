@@ -1116,7 +1116,7 @@ footer {
     </div>
   </div>
   <div class="hero-right">
-    <img class="hero-right-img" id="hero-img" src="img/hero.jpg" alt="Cocina premium Casa Comoda">
+    <img class="hero-right-img" id="hero-img" src="img/salon-premium.jpg" alt="Interior premium con ventanales y sofá modular">
     <div class="hero-badge">
       <div class="hero-badge-main">TLC</div>
       <div class="hero-badge-sub">Evaluado según origen<br>y estructura de importación</div>
@@ -1557,7 +1557,7 @@ footer {
     }, { passive: true });
   }
 
-  // Hero image rotation — propias primero, luego Casa Cómoda
+  // Hero image crossfade rotation — propias primero, luego Casa Cómoda
   const heroImages = [
     { src: 'img/salon-premium.jpg',  alt: 'Interior premium con ventanales y sofá modular' },
     { src: 'img/corredor-new.jpg',   alt: 'Corredor interior de edificio residencial premium' },
@@ -1568,16 +1568,30 @@ footer {
   let heroIdx = 0;
   const heroImgEl = document.getElementById('hero-img');
   if (heroImgEl && !reduceMotion) {
+    // Precargar todas las imágenes
+    heroImages.forEach(item => { const i = new Image(); i.src = item.src; });
+    // Crear segunda imagen para crossfade
+    const heroImgB = heroImgEl.cloneNode();
+    heroImgB.style.position = 'absolute';
+    heroImgB.style.inset = '0';
+    heroImgB.style.opacity = '0';
+    heroImgB.style.transition = 'opacity 0.8s ease';
+    heroImgEl.style.transition = 'opacity 0.8s ease';
+    heroImgEl.parentElement.style.position = 'relative';
+    heroImgEl.parentElement.appendChild(heroImgB);
+    let useB = false;
     setInterval(() => {
       heroIdx = (heroIdx + 1) % heroImages.length;
-      heroImgEl.style.opacity = '0';
-      setTimeout(() => {
-        heroImgEl.src = heroImages[heroIdx].src;
-        heroImgEl.alt = heroImages[heroIdx].alt;
-        heroImgEl.style.opacity = '1';
-      }, 400);
-    }, 4000);
-    heroImgEl.style.transition = 'opacity 0.4s ease';
+      const next = heroImages[heroIdx];
+      if (useB) {
+        heroImgEl.src = next.src; heroImgEl.alt = next.alt;
+        heroImgEl.style.opacity = '1'; heroImgB.style.opacity = '0';
+      } else {
+        heroImgB.src = next.src; heroImgB.alt = next.alt;
+        heroImgB.style.opacity = '1'; heroImgEl.style.opacity = '0';
+      }
+      useB = !useB;
+    }, 4500);
   }
 
   // Form submit → Google Sheets
