@@ -1161,8 +1161,8 @@ footer {
 <section class="gallery">
   <div class="gallery-track">
     <div class="gallery-item">
-      <img src="img/cocina-detail.jpg" alt="Detalle cocina moderna con vidrio estriado" loading="lazy">
-      <div class="gallery-caption">Cocina a medida · Casa Comoda</div>
+      <img src="img/salon-premium.jpg" alt="Interior premium con ventanales y sofá modular" loading="lazy">
+      <div class="gallery-caption">Interior · Proyecto residencial de escala</div>
     </div>
     <div class="gallery-item">
       <img src="img/estanteria.jpg" alt="Sistema de estantería abierta premium" loading="lazy">
@@ -1277,7 +1277,7 @@ footer {
     </div>
   </div>
   <div class="origins-banner reveal">
-    <img src="img/cocina-wide.jpg" alt="Cocina premium instalada en proyecto residencial" loading="lazy">
+    <img src="img/corredor-new.jpg" alt="Corredor interior de edificio residencial premium" loading="lazy">
     <div class="origins-banner-overlay">
       <span class="origins-banner-tag">Vista en terreno — Anji, Zhejiang</span>
       <span class="origins-banner-text">Los materiales se verifican antes de entrar a producción</span>
@@ -1319,26 +1319,26 @@ footer {
 
 <!-- ALLIES -->
 <section class="allies">
-  <div class="section-label reveal">Red de proveedores</div>
-  <div class="allies-headline reveal" style="--delay:0.1s">Proveedores aliados.<br>Estándar validado.</div>
+  <div class="section-label reveal">Con quién trabajamos</div>
+  <div class="allies-headline reveal" style="--delay:0.1s">Marcas con las<br>que operamos<br><em>en proyectos.</em></div>
   <p class="allies-sub reveal" style="--delay:0.15s">
-    VORTE trabaja con una red seleccionada de fabricantes y distribuidores con historial de exportación comprobado. Cada aliado pasa por una revisión de certificaciones, capacidad de producción y estándar de calidad antes de integrarse al portafolio.
+    VORTE coordina el equipamiento completo del proyecto trabajando junto a marcas seleccionadas. Cada marca fue elegida por su estándar, capacidad de respuesta y experiencia en proyectos de escala.
   </p>
   <div class="allies-grid">
     <div class="ally-card reveal" style="--delay:0.05s">
-      <div class="ally-badge">Proveedor principal</div>
-      <div class="ally-name">Casa Comoda</div>
-      <div class="ally-desc">Mobiliario residencial y contract de alto estándar. Aliado estratégico para equipamiento completo de unidades en proyectos Multifamily.</div>
+      <div class="ally-badge">Con quienes operamos</div>
+      <div class="ally-name">Casa Cómoda</div>
+      <div class="ally-desc">Mobiliario residencial y contract de alto estándar. Una de las marcas con las que más trabajamos para equipar proyectos Multifamily de principio a fin.</div>
     </div>
     <div class="ally-card reveal" style="--delay:0.12s">
-      <div class="ally-badge">Aliado certificado</div>
+      <div class="ally-badge">Con quienes operamos</div>
       <div class="ally-name">Pisos &amp; Revestimientos</div>
-      <div class="ally-desc">Proveedor especializado en pisos y revestimientos para proyectos residenciales y de hospitalidad. Catálogo validado para uso intensivo.</div>
+      <div class="ally-desc">Línea de pisos y revestimientos para proyectos residenciales y de hospitalidad. Catálogo validado para uso intensivo y escala contract.</div>
     </div>
     <div class="ally-card reveal" style="--delay:0.19s">
-      <div class="ally-badge">Aliado certificado</div>
-      <div class="ally-name">Ventanas &amp; Ventanales</div>
-      <div class="ally-desc">Sistemas de ventanas y ventanales para proyectos de escala. Especificaciones contract con certificación de exportación comprobada.</div>
+      <div class="ally-badge">Con quienes operamos</div>
+      <div class="ally-name">Ventanas &amp; Paneles</div>
+      <div class="ally-desc">Sistemas de ventanas y paneles para proyectos de escala. Especificaciones contract con certificación de exportación comprobada.</div>
     </div>
   </div>
 </section>
@@ -1346,7 +1346,7 @@ footer {
 <!-- PROOF -->
 <section class="proof">
   <div class="proof-img reveal">
-    <img src="img/closet.jpg" alt="Sistema de guardado alto premium" loading="lazy">
+    <img src="img/inspector-new.jpg" alt="Inspector de calidad verificando tapizado en fábrica" loading="lazy">
   </div>
   <div class="proof-content reveal" style="--delay:0.15s">
     <div class="proof-tag">Validación en origen</div>
@@ -1555,6 +1555,29 @@ footer {
     window.addEventListener('scroll', () => {
       heroImg.style.transform = `translateY(${window.scrollY * 0.22}px)`;
     }, { passive: true });
+  }
+
+  // Hero image rotation — propias primero, luego Casa Cómoda
+  const heroImages = [
+    { src: 'img/salon-premium.jpg',  alt: 'Interior premium con ventanales y sofá modular' },
+    { src: 'img/corredor-new.jpg',   alt: 'Corredor interior de edificio residencial premium' },
+    { src: 'img/inspector-new.jpg',  alt: 'Inspector de calidad verificando tapizado en fábrica' },
+    { src: 'img/hero.jpg',           alt: 'Cocina premium instalada en proyecto' },
+    { src: 'img/estanteria.jpg',     alt: 'Sistema de estantería abierta premium' },
+  ];
+  let heroIdx = 0;
+  const heroImgEl = document.getElementById('hero-img');
+  if (heroImgEl && !reduceMotion) {
+    setInterval(() => {
+      heroIdx = (heroIdx + 1) % heroImages.length;
+      heroImgEl.style.opacity = '0';
+      setTimeout(() => {
+        heroImgEl.src = heroImages[heroIdx].src;
+        heroImgEl.alt = heroImages[heroIdx].alt;
+        heroImgEl.style.opacity = '1';
+      }, 400);
+    }, 4000);
+    heroImgEl.style.transition = 'opacity 0.4s ease';
   }
 
   // Form submit → Google Sheets
