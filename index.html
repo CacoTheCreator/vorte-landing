@@ -296,34 +296,6 @@ nav.scrolled { border-bottom-color: var(--accent-border); }
 .statement-right { color: var(--muted); font-size: 0.93rem; font-weight: 200; line-height: 1.95; }
 .statement-right strong { color: var(--white); font-weight: 400; }
 
-/* ── GALLERY ── */
-.gallery {
-  border-bottom: 1px solid var(--border);
-  overflow: hidden;
-}
-.gallery-track {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-.gallery-item { position: relative; overflow: hidden; aspect-ratio: 4/3; }
-.gallery-item img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: grayscale(60%);
-  transition: filter 0.4s ease, transform 0.6s ease;
-}
-.gallery-item:hover img { filter: grayscale(20%); transform: scale(1.03); }
-.gallery-caption {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 1rem 1.4rem;
-  font-size: 0.62rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  background: linear-gradient(to top, rgba(13,17,23,0.85), transparent);
-}
 
 /* ── SERVICES ── */
 .services {
@@ -507,40 +479,6 @@ nav.scrolled { border-bottom-color: var(--accent-border); }
   color: var(--muted);
   line-height: 1.95;
 }
-.origins-banner {
-  position: relative;
-  height: 280px;
-  overflow: hidden;
-  margin-bottom: 0;
-  border: 1px solid var(--border);
-}
-.origins-banner img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  filter: grayscale(60%);
-  opacity: 0.5;
-  display: block;
-}
-.origins-banner-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(13,17,23,0.8) 0%, rgba(13,17,23,0.3) 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 2rem 3rem;
-}
-.origins-banner-tag {
-  font-size: 0.62rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.5rem;
-}
-.origins-banner-text {
-  font-size: 0.85rem;
-  font-weight: 200;
-  color: var(--muted);
-}
 .origins-clusters {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -663,87 +601,6 @@ nav.scrolled { border-bottom-color: var(--accent-border); }
   line-height: 1.75;
 }
 
-/* ── PROOF ── */
-.proof {
-  padding: 8rem 4rem;
-  border-bottom: 1px solid var(--border);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: center;
-}
-.proof-img {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 4/3;
-}
-.proof-img img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  filter: grayscale(50%);
-  display: block;
-  transition: filter 0.4s;
-}
-.proof-img:hover img { filter: grayscale(20%); }
-.proof-img::after {
-  content: '';
-  position: absolute; inset: 0;
-  border: 1px solid var(--accent-border);
-  pointer-events: none;
-}
-.proof-tag {
-  font-size: 0.62rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.proof-tag::before {
-  content: '';
-  display: block;
-  width: 2rem; height: 1px;
-  background: var(--accent);
-}
-.proof-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2.2rem, 3vw, 3rem);
-  letter-spacing: 0.03em;
-  color: var(--white);
-  line-height: 1.05;
-  margin-bottom: 1.8rem;
-}
-.proof-title em { font-style: normal; color: var(--accent); }
-.proof-text {
-  font-size: 0.88rem;
-  font-weight: 200;
-  color: var(--muted);
-  line-height: 1.9;
-  margin-bottom: 2rem;
-}
-.proof-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-}
-.proof-list li {
-  font-size: 0.8rem;
-  font-weight: 200;
-  color: var(--muted);
-  display: flex;
-  align-items: flex-start;
-  gap: 0.8rem;
-}
-.proof-list li::before {
-  content: '—';
-  color: var(--accent);
-  flex-shrink: 0;
-  font-size: 0.7rem;
-  margin-top: 0.1rem;
-}
 
 /* ── DIFF ── */
 .diff {
@@ -911,64 +768,20 @@ input::placeholder { color: var(--muted); }
 }
 .form-success strong { color: var(--accent); }
 
-/* ── PROVEEDORES ── */
-.proveedores {
-  padding: 8rem 4rem;
+/* ── PROVEEDORES COMPACT ── */
+.proveedores-compact {
+  padding: 2.2rem 4rem;
   border-bottom: 1px solid var(--border);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: start;
-}
-.proveedores-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2rem, 3vw, 2.8rem);
-  letter-spacing: 0.03em;
-  color: var(--white);
-  line-height: 1.05;
-  margin-bottom: 1.2rem;
-}
-.proveedores-title em { font-style: normal; color: var(--accent); }
-.proveedores-text {
-  font-size: 0.88rem;
-  font-weight: 200;
-  color: var(--muted);
-  line-height: 1.9;
-  margin-bottom: 2.2rem;
-}
-.proveedores-items {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  background: var(--surface);
 }
-.proveedores-item {
-  padding: 1.6rem 0;
-  border-bottom: 1px solid var(--border);
-  display: grid;
-  grid-template-columns: 2.4rem 1fr;
-  gap: 1.2rem;
-  align-items: start;
-}
-.proveedores-item:first-child { border-top: 1px solid var(--border); }
-.proveedores-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.3rem;
-  color: var(--accent);
-  opacity: 0.35;
-  line-height: 1;
-}
-.proveedores-item-title {
-  font-size: 0.82rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--white);
-  margin-bottom: 0.35rem;
-}
-.proveedores-item-desc {
+.proveedores-compact-label {
   font-size: 0.78rem;
   font-weight: 200;
   color: var(--muted);
-  line-height: 1.75;
+  letter-spacing: 0.04em;
 }
 
 /* ── FOOTER ── */
@@ -1041,9 +854,6 @@ footer {
   .hero-badge { bottom: 1.5rem; right: 1.5rem; }
 
   .statement { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 2rem; }
-  .gallery-track { grid-template-columns: 1fr; }
-  .gallery-item { aspect-ratio: 16/9; }
-
   .services { padding: 5rem 2rem; }
   .services-grid { grid-template-columns: 1fr 1fr; }
   .service-card { border-right: none; border-bottom: 1px solid var(--border); }
@@ -1061,8 +871,6 @@ footer {
   .allies-grid { grid-template-columns: 1fr; }
   .ally-card { border-right: 1px solid var(--border); border-bottom: none; border-top: 1px solid var(--border); margin-top: -1px; }
 
-  .proof { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 2rem; }
-
   .diff { padding: 5rem 2rem; }
   .diff-grid { grid-template-columns: 1fr; }
   .diff-item { border-right: none; }
@@ -1071,7 +879,7 @@ footer {
   .form-row { grid-template-columns: 1fr; }
   .form-row .form-group:first-child { border-right: 1px solid var(--border); }
 
-  .proveedores { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 2rem; }
+  .proveedores-compact { flex-direction: column; align-items: flex-start; gap: 1.2rem; padding: 2rem; }
 
   footer { flex-direction: column; text-align: center; padding: 2.5rem 2rem; }
   .footer-links { justify-content: center; }
@@ -1132,6 +940,7 @@ footer {
     <span class="ticker-item"><span>—</span> Contract para Hoteles y Edificios</span>
     <span class="ticker-item"><span>—</span> TLC evaluado caso a caso</span>
     <span class="ticker-item"><span>—</span> Validación de Proveedores en Origen</span>
+    <span class="ticker-item"><span>—</span> Asesoría &amp; Acompañamiento de Proyectos</span>
     <span class="ticker-item"><span>—</span> Brokerage &amp; Representación</span>
     <span class="ticker-item"><span>—</span> Foshan · Dongguan · Anji</span>
     <span class="ticker-item"><span>—</span> Entrega Directa en Obra</span>
@@ -1140,6 +949,7 @@ footer {
     <span class="ticker-item"><span>—</span> Contract para Hoteles y Edificios</span>
     <span class="ticker-item"><span>—</span> TLC evaluado caso a caso</span>
     <span class="ticker-item"><span>—</span> Validación de Proveedores en Origen</span>
+    <span class="ticker-item"><span>—</span> Asesoría &amp; Acompañamiento de Proyectos</span>
     <span class="ticker-item"><span>—</span> Brokerage &amp; Representación</span>
     <span class="ticker-item"><span>—</span> Foshan · Dongguan · Anji</span>
     <span class="ticker-item"><span>—</span> Entrega Directa en Obra</span>
@@ -1152,28 +962,11 @@ footer {
     No es un gasto.<br><em>Es capex</em><br>que trabaja.
   </div>
   <div class="statement-right reveal" style="--delay:0.15s">
-    Para un fondo o propietario de edificios en renta, cada unidad equipada tiene un impacto directo en el arrendamiento, la mantención y la depreciación contable. El problema no es el arancel. Es la <strong>brecha entre lo que se puede obtener en origen y lo que termina llegando a obra</strong>.<br><br>
-    VORTE opera esa brecha: seleccionamos fabricantes, validamos calidad en origen, coordinamos la logística y entregamos en obra — para que el proyecto cumpla sus tiempos y el equipamiento soporte años de uso intensivo.
+    Para un fondo o propietario de edificios en renta, cada unidad equipada impacta el arrendamiento, la mantención y la depreciación contable. La brecha no está en el arancel — está entre <strong>lo que se puede obtener en origen y lo que termina llegando a obra</strong>.<br><br>
+    VORTE opera esa brecha: fabricantes seleccionados, calidad validada en origen, logística coordinada y entrega en obra.
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="gallery">
-  <div class="gallery-track">
-    <div class="gallery-item">
-      <img src="img/salon-premium.jpg" alt="Interior premium con ventanales y sofá modular" loading="lazy">
-      <div class="gallery-caption">Interior · Proyecto residencial de escala</div>
-    </div>
-    <div class="gallery-item">
-      <img src="img/estanteria.jpg" alt="Sistema de estantería abierta premium" loading="lazy">
-      <div class="gallery-caption">Estantería open shelving · Contract</div>
-    </div>
-    <div class="gallery-item">
-      <img src="img/inspector-new.jpg" alt="Control de calidad en fábrica de mobiliario" loading="lazy">
-      <div class="gallery-caption">Control de calidad · En origen</div>
-    </div>
-  </div>
-</section>
 
 <!-- SERVICES -->
 <section class="services" id="servicios">
@@ -1264,6 +1057,13 @@ footer {
           <div class="step-desc">Evaluamos la salud financiera de fábricas en origen, verificamos certificaciones y revisamos el historial de exportación — antes de comprometer capital del cliente.</div>
         </div>
       </div>
+      <div class="model-step">
+        <div class="step-num">D</div>
+        <div class="step-body">
+          <div class="step-title">Acompañamiento &amp; Asesoría</div>
+          <div class="step-desc">Trabajamos junto al equipo de proyecto desde la definición de especificaciones hasta la coordinación con obra. Una opción para quienes necesitan criterio técnico antes de comprometerse con una orden.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1274,13 +1074,6 @@ footer {
     <div class="origins-title reveal">Origen<br>verificado.<br><em>Entrega</em><br>coordinada.</div>
     <div class="origins-text reveal" style="--delay:0.15s">
       Operamos desde los tres clústeres industriales más relevantes de China para el sector del mueble y equipamiento interior. Cada proveedor es validado antes de integrarse al portafolio VORTE.
-    </div>
-  </div>
-  <div class="origins-banner reveal">
-    <img src="img/corredor-new.jpg" alt="Corredor interior de edificio residencial premium" loading="lazy">
-    <div class="origins-banner-overlay">
-      <span class="origins-banner-tag">Vista en terreno — Anji, Zhejiang</span>
-      <span class="origins-banner-text">Los materiales se verifican antes de entrar a producción</span>
     </div>
   </div>
   <div class="origins-clusters">
@@ -1343,25 +1136,6 @@ footer {
   </div>
 </section>
 
-<!-- PROOF -->
-<section class="proof">
-  <div class="proof-img reveal">
-    <img src="img/inspector-new.jpg" alt="Inspector de calidad verificando tapizado en fábrica" loading="lazy">
-  </div>
-  <div class="proof-content reveal" style="--delay:0.15s">
-    <div class="proof-tag">Validación en origen</div>
-    <div class="proof-title">Antes de<br>comprometer<br><em>capital.</em></div>
-    <p class="proof-text">
-      Cada fábrica que integra el portafolio VORTE pasa por una revisión previa: verificamos certificaciones, historial de exportación y capacidad de producción. El control de calidad ocurre en origen, no después del despacho.
-    </p>
-    <ul class="proof-list">
-      <li>Revisión de certificaciones antes de la orden</li>
-      <li>Inspección de calidad durante producción</li>
-      <li>Verificación de empaque y consolidado</li>
-      <li>Trazabilidad completa desde fábrica a obra</li>
-    </ul>
-  </div>
-</section>
 
 <!-- DIFF -->
 <section class="diff">
@@ -1465,40 +1239,9 @@ footer {
 </section>
 
 <!-- PROVEEDORES CHINOS -->
-<section class="proveedores">
-  <div class="proveedores-left reveal">
-    <div class="section-label">¿Eres proveedor?</div>
-    <h2 class="proveedores-title">¿Fabricas o<br>distribuyes FF&amp;E<br><em>de calidad?</em></h2>
-    <p class="proveedores-text">
-      Si representas una fábrica o distribuidora con capacidad de exportación, VORTE puede ser tu puerta de entrada al mercado inmobiliario chileno. Trabajamos con proveedores que cumplan estándares de calidad contract y tengan historial de exportación.
-    </p>
-    <a href="mailto:proyecto@vorte.cl?subject=Soy proveedor — quiero conectar con VORTE" class="btn-primary">Conectar como proveedor</a>
-  </div>
-  <div class="proveedores-right reveal" style="--delay:0.15s">
-    <div class="proveedores-items">
-      <div class="proveedores-item">
-        <div class="proveedores-num">01</div>
-        <div class="proveedores-body">
-          <div class="proveedores-item-title">Acceso al mercado chileno</div>
-          <div class="proveedores-item-desc">Conectamos tu producto con proyectos Multifamily, fondos de inversión y desarrolladoras en Chile.</div>
-        </div>
-      </div>
-      <div class="proveedores-item">
-        <div class="proveedores-num">02</div>
-        <div class="proveedores-body">
-          <div class="proveedores-item-title">Sin burocracia comercial</div>
-          <div class="proveedores-item-desc">VORTE actúa como tu representante local. Tú produces, nosotros gestionamos la relación comercial y la logística.</div>
-        </div>
-      </div>
-      <div class="proveedores-item">
-        <div class="proveedores-num">03</div>
-        <div class="proveedores-body">
-          <div class="proveedores-item-title">Proyectos de escala</div>
-          <div class="proveedores-item-desc">Nuestros clientes equipan edificios completos — no compran una sola unidad. Volumen real desde el primer proyecto.</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="proveedores-compact reveal">
+  <span class="proveedores-compact-label">¿Fabricas o distribuyes FF&amp;E de calidad?</span>
+  <a href="mailto:proyecto@vorte.cl?subject=Soy proveedor — quiero conectar con VORTE" class="btn-ghost">Conectar como proveedor</a>
 </section>
 
 <!-- FOOTER -->
